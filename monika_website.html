@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monika Jotautaitė - AI Safety Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fira+Code:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', monospace;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Terminal-like grid pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* Code-like background pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(29, 233, 182, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #64ffda, #1de9b6, #00e676);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0bec5;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(13, 17, 23, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 12px 25px;
+            margin: 0 auto 50px;
+            display: inline-block;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        nav::before {
+            content: '$ cd ~/portfolio && ls -la';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #7c3aed;
+            background: #0d1117;
+            padding: 0 10px;
+        }
+
+        nav a {
+            color: #e6edf3;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        nav a::before {
+            content: './';
+            color: #7c3aed;
+            margin-right: 2px;
+        }
+
+        nav a:hover {
+            color: #64ffda;
+            text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+        }
+
+        /* Main Content */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .content {
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            position: relative;
+        }
+
+        .content::before {
+            content: '// About Monika';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #0d1117;
+            padding: 0 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #7c3aed;
+            font-weight: 500;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #64ffda;
+            font-weight: 500;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .intro::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #f85149;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .content a {
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .content a:hover {
+            color: #1de9b6;
+            text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+        }
+
+        /* Profile Image */
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(100, 255, 218, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            border-color: rgba(100, 255, 218, 0.6);
+        }
+
+        /* Recent Work Section */
+        .recent-work {
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            grid-column: 1 / -1;
+            position: relative;
+        }
+
+        .recent-work::before {
+            content: '// Recent work && publications.sort(date)';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #0d1117;
+            padding: 0 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #7c3aed;
+            font-weight: 500;
+        }
+
+        .recent-work h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #64ffda;
+            font-weight: 300;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -1px;
+        }
+
+        /* Code-like styling for links */
+        .code-link {
+            background: rgba(100, 255, 218, 0.15);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95em;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .code-link:hover {
+            background: rgba(100, 255, 218, 0.25);
+            border-color: rgba(100, 255, 218, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            nav {
+                padding: 10px 20px;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Subtle animations */
+        .content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .profile-section {
+            animation: fadeInRight 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Monika Jotautaitė</h1>
+            <p class="subtitle">AI Safety Researcher • London</p>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="content" id="about">
+                <p class="intro">Hi, I'm Monika Jotautaitė! I'm an AI safety researcher based in London.</p>
+                
+                <p>I'm an independent researcher working on LLM evaluations. See more about my research below.</p>
+                
+                <p>Currently, I'm a technical program manager with the ASET Benchmarks program and an evaluations scientist at <a href="#" class="code-link">Arcadia Impact</a> for the AISI <a href="#" class="code-link">bounty program</a>.</p>
+                
+                <p>I am the organiser of <a href="#" class="code-link">Women in AI Safety London</a>. To learn about our upcoming events, please fill out <a href="#" class="code-link">this form</a>. For queries please reach out at london / at / womeninaisafety / dot \ org</p>
+                
+                <p>I am a board member and sometimes a teacher in <a href="#" class="code-link">ML4Good</a>. I created new materials on <a href="#" class="code-link">LLM evaluations</a> and <a href="#" class="code-link">RL</a>.</p>
+                
+                <p>I created AI Safety materials for <a href="#" class="code-link">GirlsWhoML</a> (<a href="#" class="code-link">slides</a>). If you'd like to run this lecture series at your university, please reach out <a href="#" class="code-link">here</a>.</p>
+                
+                <div id="contact" style="margin-top: 30px;">
+                    <p>If you'd like to reach out to me, you can find me on <a href="#" class="code-link">LinkedIn</a>.</p>
+                    
+                    <p>My past and current projects can be found on <a href="#" class="code-link">GitHub</a>.</p>
+                    
+                    <p>My <a href="#" class="code-link">CV</a>.</p>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMmEyYTJhIiByeD0iMjAiLz4KPHN2ZyB4PSI1MCIgeT0iNTAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCIgZmlsbD0ibm9uZSI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMzMzIiByeD0iMTAiLz4KPHN2ZyB4PSI1MCIgeT0iNDAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMjAwIDEyMCIgZmlsbD0ibm9uZSI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjNDQ0IiByeD0iNSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSI0MCIgcj0iMjAiIGZpbGw9IiM2NGZmZGEiLz4KPHJlY3QgeD0iNzAiIHk9IjcwIiB3aWR0aD0iNjAiIGhlaWdodD0iNDAiIGZpbGw9IiM2NGZmZGEiIHJ4PSI1Ii8+CjwvY2lyY2xlPgo8L3N2Zz4KPC9zdmc+CjwvcmVjdD4KPC9zdmc+" alt="Monika Jotautaitė presenting at a conference" class="profile-image">
+            </div>
+        </main>
+
+        <div class="recent-work" id="research">
+            <h2>Recent work</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #b0bec5;">
+                This section will showcase your latest research papers, publications, and projects.<br>
+                You can easily add your papers and links here.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
