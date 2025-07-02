@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
         }
 
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fira+Code:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Space Grotesk', monospace;
             background: #0d1117;
@@ -30,7 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
             background-size: 20px 20px;
@@ -46,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(29, 233, 182, 0.08) 0%, transparent 50%);
             pointer-events: none;
@@ -93,7 +94,7 @@
             padding: 12px 25px;
             margin: 0 auto 50px;
             display: inline-block;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(100, 255, 218, 0.1);
             border: 1px solid rgba(100, 255, 218, 0.2);
@@ -148,7 +149,7 @@
             backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 40px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(100, 255, 218, 0.1);
             border: 1px solid rgba(100, 255, 218, 0.2);
@@ -230,7 +231,7 @@
             border-radius: 12px;
             padding: 40px;
             margin-top: 40px;
-            box-shadow: 
+            box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 inset 0 1px 0 rgba(100, 255, 218, 0.1);
             border: 1px solid rgba(100, 255, 218, 0.2);
@@ -272,10 +273,89 @@
             transition: all 0.3s ease;
         }
 
-        .code-link:hover {
-            background: rgba(100, 255, 218, 0.25);
-            border-color: rgba(100, 255, 218, 0.5);
-            transform: translateY(-1px);
+        /* Contact Form Styling */
+        .contact-form {
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #7c3aed;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: #e6edf3;
+            transition: all 0.3s ease;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #64ffda;
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+            background: rgba(13, 17, 23, 0.95);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #7d8590;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #64ffda, #1de9b6);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #0d1117;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         /* Responsive Design */
@@ -380,39 +460,50 @@
         <div class="recent-work" id="research">
             <h2>Recent work</h2>
             <p style="text-align: center; font-size: 1.1rem; color: #b0bec5;">
+                Speciesism in AI: Evaluating Discrimination Against Animals in Large Language Models <br>
+                A new paper is coming soon
+
+            </p>
+            <p style="text-align: center; font-size: 1.1rem; color: #b0bec5;">
                 From Stability to Inconsistency: A Study of Moral Preferences in LLMs <br>
                 Pivotal Fellowship (summer 2024) <a href="https://docs.google.com/presentation/d/1xcS78PeuNb9bjeqsuF8_9gH40r3nk5Zs0xFEAOQblNQ/edit">slides</a> <a href="https://github.com/monikajot/llm-ethics-2">code</a> <a href="https://arxiv.org/abs/2504.06324">paper</a>
 
             </p>
-        </div>
-        <section id="contact" class="contact-section">
-    <div class="container">
-        <h2>Contact</h2>
-        <p>I'd love to hear from you! Send me a message below.</p>
 
-        <form action="https://formspree.io/f/mqabjqde" method="POST" class="contact-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+        <div id="contact" style="margin-top: 40px;">
+                    <h3 style="font-family: 'JetBrains Mono', monospace; color: #64ffda; margin-bottom: 20px; font-size: 1.3rem; font-weight: 500;">// Get in touch</h3>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">$ echo "name"</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
 
-            <div class="form-group">
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject">
-            </div>
+                        <div class="form-group">
+                            <label for="email">$ echo "email"</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
 
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
+                        <div class="form-group">
+                            <label for="subject">$ echo "subject"</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
 
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+                        <div class="form-group">
+                            <label for="message">$ cat > message.txt</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">./send_message.sh</span>
+                        </button>
+                    </form>
+
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(100, 255, 218, 0.2);">
+                        <p>Alternative channels:</p>
+                        <p><a href="#" class="code-link">LinkedIn</a> • <a href="#" class="code-link">GitHub</a> • <a href="#" class="code-link">CV</a></p>
+                    </div>
+                </div>
     </div>
 </section>
     </div>
