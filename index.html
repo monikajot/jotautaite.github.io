@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monika Jotautaitė - AI Safety Researcher</title>
+    <title>Monika Jotautaitė | AI Safety Researcher</title>
     <style>
         * {
             margin: 0;
@@ -12,498 +11,382 @@
             box-sizing: border-box;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fira+Code:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
         body {
-            font-family: 'Space Grotesk', monospace;
-            background: #0d1117;
-            color: #e6edf3;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
             min-height: 100vh;
-            position: relative;
-        }
-
-        /* Terminal-like grid pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        /* Code-like background pattern */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(29, 233, 182, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 60px 20px;
         }
 
-        /* Header */
         header {
-            padding: 60px 0 40px;
-            text-align: center;
-            position: relative;
-        }
-
-        .name {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #64ffda, #1de9b6, #00e676);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: #b0bec5;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(13, 17, 23, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
-            padding: 12px 25px;
-            margin: 0 auto 50px;
-            display: inline-block;
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        nav::before {
-            content: '$ cd ~/portfolio && ls -la';
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #7c3aed;
-            background: #0d1117;
-            padding: 0 10px;
-        }
-
-        nav a {
-            color: #e6edf3;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 400;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.9rem;
-        }
-
-        nav a::before {
-            content: './';
-            color: #7c3aed;
-            margin-right: 2px;
-        }
-
-        nav a:hover {
-            color: #64ffda;
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
-        }
-
-        /* Main Content */
-        main {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 60px;
-            align-items: start;
             margin-bottom: 60px;
         }
 
-        .content {
-            background: rgba(13, 17, 23, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            position: relative;
-        }
-
-        .content::before {
-            content: '// About Monika';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: #0d1117;
-            padding: 0 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #7c3aed;
-            font-weight: 500;
-        }
-
-        .intro {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #64ffda;
-            font-weight: 500;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .intro::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: #f85149;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: bold;
-        }
-
-        .content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .content a {
-            color: #64ffda;
+        .header-link {
+            color: #0066cc;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            font-size: 14px;
         }
 
-        .content a:hover {
-            color: #1de9b6;
-            text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+        .header-link:hover {
+            text-decoration: underline;
         }
 
-        /* Profile Image */
-        .profile-section {
-            text-align: center;
+        .main-content {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
         }
 
-        .profile-image {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            border: 3px solid rgba(100, 255, 218, 0.3);
-            transition: all 0.3s ease;
+        .sidebar {
+            position: sticky;
+            top: 60px;
+            height: fit-content;
         }
 
-        .profile-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            border-color: rgba(100, 255, 218, 0.6);
+        .sidebar-links {
+            margin-top: 0;
         }
 
-        /* Recent Work Section */
-        .recent-work {
-            background: rgba(13, 17, 23, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 40px;
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            grid-column: 1 / -1;
-            position: relative;
+        .sidebar-links h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
 
-        .recent-work::before {
-            content: '// Recent work && publications.sort(date)';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: #0d1117;
-            padding: 0 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #7c3aed;
-            font-weight: 500;
+        .sidebar-links ul {
+            list-style: none;
         }
 
-        .recent-work h2 {
-            font-size: 2.5rem;
-            text-align: center;
+        .sidebar-links a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            transition: transform 0.2s;
+        }
+
+        .sidebar-links a:hover {
+            text-decoration: underline;
+            transform: translateX(2px);
+        }
+
+        .sidebar-links a::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+        }
+
+        .sidebar-links a[href*="linkedin"]::before {
+            content: '💼';
+        }
+
+        .sidebar-links a[href*="github"]::before {
+            content: '💻';
+        }
+
+        .sidebar-links a[href*="scholar.google"]::before {
+            content: '🎓';
+        }
+
+        .sidebar-links a[href*="drive.google"]::before,
+        .sidebar-links a[href*="CV"]::before,
+        .sidebar-links a[href*="cv"]::before {
+            content: '📄';
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #0066cc;
             margin-bottom: 30px;
-            color: #64ffda;
-            font-weight: 300;
-            font-family: 'JetBrains Mono', monospace;
-            letter-spacing: -1px;
+            font-weight: 500;
         }
 
-        /* Code-like styling for links */
-        .code-link {
-            background: rgba(100, 255, 218, 0.15);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.95em;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            transition: all 0.3s ease;
+        .bio {
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
 
-        /* Contact Form Styling */
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            font-weight: 600;
+            color: #1a1a1a;
+            border-left: 3px solid #0066cc;
+            padding-left: 12px;
+        }
+
+        .work-item {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            padding-left: 12px;
+            border-left: 2px solid #f0f0f0;
+        }
+
+        .paper {
+            margin-bottom: 30px;
+            padding: 16px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s;
+        }
+
+        .paper:hover {
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .paper-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .paper-meta {
+            font-size: 13px;
+            color: #0066cc;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .paper-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .paper-links {
+            margin-top: 10px;
+        }
+
+        .paper-links a {
+            color: #0066cc;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+
+        .paper-links a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e8e8e8;
+        }
+
+        .contact-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
         .contact-form {
-            margin-top: 25px;
+            max-width: 500px;
+            margin-top: 20px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #7c3aed;
-            margin-bottom: 8px;
-            font-weight: 500;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #666;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            background: rgba(13, 17, 23, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 6px;
-            padding: 12px 16px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.95rem;
-            color: #e6edf3;
-            transition: all 0.3s ease;
-            resize: vertical;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 14px;
+            color: #333;
+            transition: border-color 0.2s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #64ffda;
-            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
-            background: rgba(13, 17, 23, 0.95);
+            border-color: #0066cc;
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #7d8590;
-            font-family: 'Fira Code', monospace;
+        .form-group textarea {
+            resize: vertical;
         }
 
-        .submit-btn {
-            background: linear-gradient(45deg, #64ffda, #1de9b6);
+        .contact-form button {
+            background: #0066cc;
+            color: white;
             border: none;
-            border-radius: 6px;
-            padding: 12px 24px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #0d1117;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: background-color 0.2s;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+        .contact-form button:hover {
+            background: #0052a3;
         }
 
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .name {
-                font-size: 2.5rem;
-            }
-            
-            main {
+            .main-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
-            .content {
-                padding: 25px;
+
+            .sidebar {
+                position: static;
+                text-align: center;
             }
-            
-            nav {
-                padding: 10px 20px;
-            }
-            
-            nav a {
-                margin: 0 10px;
-                font-size: 0.9rem;
+
+            h1 {
+                font-size: 28px;
             }
         }
-
-        /* Subtle animations */
-        .content {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .profile-section {
-            animation: fadeInRight 0.8s ease-out 0.2s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1 class="name">Monika Jotautaitė</h1>
-            <p class="subtitle">AI Researcher • London</p>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <a href="/" class="header-link">AI Safety Research</a>
         </header>
 
-        <main>
-            <div class="content" id="about">
-                <p class="intro">Hi, I'm Monika Jotautaitė! I'm an AI researcher based in London.</p>
-                
-                <p>I'm an independent researcher working on LLM evaluations. See more about my research below.</p>
-                
-                <p>I worked as an evaluations scientist and technical program manager with the ASET Benchmarks program at <a href="https://www.arcadiaimpact.org/" class="code-link">Arcadia Impact</a> for the AISI <a href="https://www.aisi.gov.uk/work/evals-bounty" class="code-link">bounty program</a>.</p>
-                
-                <p>I am the organiser of <a href="https://www.womeninaisafety.org/" class="code-link">Women in AI Safety London</a>. To learn about our upcoming events, please fill out <a href="https://www.womeninaisafety.org/contact" class="code-link">this form</a>. For queries please reach out at london / at / womeninaisafety / dot \ org</p>
-                
-                <p>I am a board member and sometimes a teacher in <a href="https://www.ml4good.org/" class="code-link">ML4Good</a>. I created new materials on <a href="https://docs.google.com/presentation/d/1D_q_LdUC4VRleAPqmrM15RHATRhjsiz-Wt1gRRPB95g/edit" class="code-link">LLM evaluations</a> and <a href="https://docs.google.com/presentation/d/14zJaAidABrPvSgLTkiaefKnNsdQ-lN2RBqMjIrxY7Nk/edit" class="code-link">RL</a>.</p>
-                
-                <p>I created AI Safety materials for <a href="https://www.girlswhoml.com/" class="code-link">GirlsWhoML</a> (<a href="https://docs.google.com/presentation/d/1eowNvnFXFyJb3x1JGxuupX0Sgu2Wrn2Id9RVyK7llNs/edit" class="code-link">slides</a>). If you'd like to run this lecture series at your university, please reach out <a href="https://www.girlswhoml.com/sign-up" class="code-link">here</a>.</p>
-                
-                <div id="contact" style="margin-top: 30px;">
-                    <p>If you'd like to reach out to me, you can find me on <a href="https://www.linkedin.com/in/monika-jot/" class="code-link">LinkedIn</a>.</p>
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="sidebar-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/monika-jot/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/monikajot" target="_blank">GitHub</a></li>
+                    </ul>
                     
-                    <p>My past and current projects can be found on <a href="https://github.com/monikajot" class="code-link">GitHub</a>.</p>
-                    
-                    <p>My <a href="https://drive.google.com/file/d/1Y3xwiVWAWX92Tc8O5xATYQ5YnSNxAPfU/view" class="code-link">CV</a>.</p>
+                    <h3 style="margin-top: 20px;">Links</h3>
+                    <ul>
+                        <li><a href="https://scholar.google.com/citations?user=P_VFpxkAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+                        <li><a href="https://drive.google.com/file/d/1Y3xwiVWAWX92Tc8O5xATYQ5YnSNxAPfU/view" target="_blank">CV</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="profile-section">
-               <img src="images/picture.jpg" alt="Presenting" class="profile-image">
-            </div>
-        </main>
+            <div>
+                <h1>Monika Jotautaitė</h1>
+                <p class="subtitle">AI Safety Researcher</p>
 
-        <div class="recent-work" id="research">
-            <h2>Recent work</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #b0bec5;">
-                Speciesism in AI: Evaluating Discrimination Against Animals in Large Language Models <br>
-                <a href="http://arxiv.org/abs/2508.11534">paper</a>
+                <div class="bio">
+                    <h2>About me</h2>
+                    <p>I'm an independent AI researcher in a 2 person team, focusing on AI control. My current work is supported by <a href="https://www.coefficientgiving.org/" target="_blank">Co-Efficient Giving</a> (formerly Open Philanthropy) and the <a href="https://existence.org/" target="_blank">Berkeley Existential Risk Initiative</a>.</p>
+                    <p style="margin-top: 12px;"> Previously, I worked on designing model evaluations and, in particular, moral value evals.</p>
+                </div>
 
-            </p>
-            <p style="text-align: center; font-size: 1.1rem; color: #b0bec5;">
-                From Stability to Inconsistency: A Study of Moral Preferences in LLMs <br>
-                Pivotal Fellowship <a href="https://docs.google.com/presentation/d/1xcS78PeuNb9bjeqsuF8_9gH40r3nk5Zs0xFEAOQblNQ/edit">slides</a> <a href="https://github.com/monikajot/llm-ethics-2">code</a> <a href="https://arxiv.org/abs/2504.06324">paper</a>
+                <div class="research">
+                    <h2>Research</h2>
+                    
+                    <div class="paper">
+                        <div class="paper-title">Speciesism in AI: Evaluating Discrimination Against Animals in Large Language Models</div>
+                        <div class="paper-authors">Monika Jotautaitė, Lucius Caviola, David A Brewster, Thilo Hagendorff</div>
+                        <div class="paper-description">Developing a speciesism benchmark comparing human and LLM responses. The results show that while most frontier models can recognize speciesism, they do not consider such behavior unethical. Under review at Nature Communications.</div>
+                        <div class="paper-links">
+                            <a href="http://arxiv.org/abs/2508.11534" target="_blank">Paper</a>
+                        </div>
+                    </div>
 
-            </p>
-        </div>
-        <div class="contact-me" id="connect">
+                    <div class="paper">
+                        <div class="paper-title">From Stability to Inconsistency: A Study of Moral Preferences in LLMs</div>
+                        <div class="paper-authors">Monika Jotautaitė, Mary Phuong</div>
+                        <div class="paper-meta">Pivotal Fellowship</div>
+                        <div class="paper-description">Introduced a novel Moral Foundations Theory evaluation dataset. Our findings reveal remarkably homogeneous preferences across different model families, yet demonstrate a lack of consistent values.</div>
+                        <div class="paper-links">
+                            <a href="https://docs.google.com/presentation/d/1xcS78PeuNb9bjeqsuF8_9gH40r3nk5Zs0xFEAOQblNQ/edit" target="_blank">Slides</a>
+                            <a href="https://github.com/monikajot/llm-ethics-2" target="_blank">Code</a>
+                            <a href="https://arxiv.org/abs/2504.06324" target="_blank">Paper</a>
+                        </div>
+                    </div>
+                </div>
 
-            <div id="con" style="margin-top: 40px;">
-                    <h3 style="font-family: 'JetBrains Mono', monospace; color: #64ffda; margin-bottom: 20px; font-size: 1.3rem; font-weight: 500;">// Get in touch</h3>
+                <div class="work-summary">
+                    <h2>My work</h2>
+                    <div class="work-item">
+                        <p><strong>UK AISI Bounty Program:</strong> As an evaluations scientist, I designed and implemented multiple evaluation proposals that were accepted for the UK AISI bounty program. The evalautions I worked on include evaluating models on the following capabilities: LLM elicitation, online gambling, collusion in AI debate and decreasing test-time token usage evaluations as well as the SmartBackdoor paper. 
+                        
+                        I was also a technical program manager with the ASET Benchmarks program mentoring a team of engineers in cybersecurity eval implementation in Inspect at <a href="https://www.arcadiaimpact.org/" target="_blank">Arcadia Impact</a>.</p>
+                    </div>
+                    <div class="work-item">
+                        <p>I organize <a href="https://www.womeninaisafety.org/" target="_blank">Women in AI Safety London</a>, a series of networking events. To receive updates on events and opportunities, join our <a href="https://www.womeninaisafety.org/contact" target="_blank">mailing list</a>. If you're interested in organizing a local event, you can apply <a href="https://airtable.com/appkKc02xe9D0le4B/pagwYlzb2uPf9L8XF/form" target="_blank">here</a>.</p>
+                    </div>
+                    <div class="work-item">
+                        <p>I occasionally teach at <a href="https://www.ml4good.org/" target="_blank">ML4Good</a> bootcamps as a head teacher or a TA. I created new materials on <a href="https://docs.google.com/presentation/d/1D_q_LdUC4VRleAPqmrM15RHATRhjsiz-Wt1gRRPB95g/edit" target="_blank">LLM evaluations</a> and <a href="https://docs.google.com/presentation/d/14zJaAidABrPvSgLTkiaefKnNsdQ-lN2RBqMjIrxY7Nk/edit" target="_blank">RL</a>. Find upcoming programs at <a href="https://www.ml4good.org/upcoming" target="_blank">ml4good.org/upcoming</a>.</p>
+                    </div>
+                    <div class="work-item">
+                        <p>I created AI Safety materials for <a href="https://www.girlswhoml.com/" target="_blank">GirlsWhoML</a> (<a href="https://docs.google.com/presentation/d/1eowNvnFXFyJb3x1JGxuupX0Sgu2Wrn2Id9RVyK7llNs/edit" target="_blank">slides</a>). If you'd like to run this lecture series at your university, reach out <a href="https://www.girlswhoml.com/sign-up" target="_blank">here</a>.</p>
+                    </div>
+                </div>
 
-                    <form action="https://formspree.io/f/mqabjqde" method="POST" class="contact-form">
+                <div class="contact-section">
+                    <h2>Get in touch</h2>
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="form-group">
-                            <label for="name">$ echo "name"</label>
+                            <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="email">$ echo "email"</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="subject">$ echo "subject"</label>
+                            <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="message">$ cat > message.txt</label>
+                            <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-
-                        <button type="submit" class="submit-btn">
-                            <span class="btn-text">./send_message.sh</span>
-                        </button>
+                        <button type="submit">Send message</button>
                     </form>
-
+                </div>
             </div>
         </div>
-
     </div>
 </body>
 </html>
