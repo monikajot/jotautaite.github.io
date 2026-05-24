@@ -316,35 +316,40 @@
 
                 <div class="bio">
                     <h2>About me</h2>
-                    <p>I'm an independent AI researcher in a 2 person team, focusing on AI control. My current work is supported by <a href="https://www.coefficientgiving.org/" target="_blank">Co-Efficient Giving</a> (formerly Open Philanthropy) and the <a href="https://existence.org/" target="_blank">Berkeley Existential Risk Initiative</a>.</p>
-                    <p style="margin-top: 12px;"> Previously, I worked on designing model evaluations and, in particular, moral value evals.</p>
+                    <p>I'm an AI control researcher, working on monitor red-teaming at Apollo Research. </p>
+                    <p style="margin-top: 12px;"> Previously, I was an independent AI researcher leading a 2 person team, focusing on MonitoringBench. My work was supported by <a href="https://www.coefficientgiving.org/" target="_blank">Co-Efficient Giving</a> (formerly Open Philanthropy) and the <a href="https://existence.org/" target="_blank">Berkeley Existential Risk Initiative</a>. </p>
+                    <p style="margin-top: 12px;">Since the January preview, MonitoringBench has been used for monitor evaluations in <a href="https://www.anthropic.com/claude-mythos-preview-risk-report" target="_blank" rel="noopener noreferrer">Anthropic's Claude Mythos Preview Risk Report</a> and <a href="https://alignment.openai.com/auto-review/" target="_blank" rel="noopener noreferrer">OpenAI's Auto-Review for Codex</a>.</p>
                 </div>
 
                 <div class="research">
                     <h2>Research</h2>
 
                     <div class="paper">
-                        <div class="paper-title">Monitoring benchmark (ongoing): Evaluating monitoring capabilities for AI control</div>
-                        <div class="paper-authors">Monika Jotautaitė, Maria Martinez</div>
+                        <div class="paper-title">MonitoringBench: Semi-Automated Red-Teaming for Agent Monitoring</div>
+                        <div class="paper-authors">Monika Jotautaitė, Maria Martinez, Ollie Matthews, Tyler Tracy</div>
                         <div class="paper-venue">Accepted at ICLR workshop</div>
-                        <div class="paper-description">Our current research: using models as red-teamers presents three challenges: mode collapse, time-consuming elicitation, and models struggling to conceive, plan, and execute attacks zero-shot. To robustly evaluate monitors, we need to (1) test across a large, diverse set of attacks, (2) ensure attack quality, and (3) gain visibility into monitor strengths and failure modes.
-                        If you are interested in the benchmark or getting an early access to the attacks, please reach out.
+                        <div class="paper-description">Our current research: using models as red-teamers presents three challenges: mode collapse, time-consuming elicitation, conceive-execute gap: models struggle to conceive, plan, and execute attacks single-turn. To robustly evaluate monitors, we need to (1) test across a large, diverse set of attacks, (2) ensure attack quality, and (3) gain visibility into monitor strengths and failure modes.
+                        If you are interested in the benchmark or independent red-teaming of monitors, please reach out.
                         </div>
                         <div class="paper-links"> 
-                            <a href="https://drive.google.com/drive/folders/17Pc8le6WPRHATd0mlqgUa8QnXYkzNg8Z" target="_blank">Benchmark-v1</a>
+                            <a href="https://huggingface.co/datasets/neur26anonsub/ctrldataset2026" target="_blank">Benchmark-v1</a>
                             <a href="https://github.com/monikajot/control-arena-bb2/tree/clean-main/" target="_blank">Code</a>
-                            <a href="https://www.lesswrong.com/posts/X8qTKsGcnsTFrqM96/monitoring-benchmark-for-ai-control" target="_blank">Blogpost</a>
-                            <a href="https://openreview.net/forum?id=gVlwWUgrzq" target="_blank">Paper </a>
+                            <a href="https://arxiv.org/abs/2605.09684" target="_blank">Paper (final) </a>
+                            <a href="https://openreview.net/forum?id=gVlwWUgrzq" target="_blank">Paper (early version accepted at ICML Agents in the Wild workshop) </a>
+                            <a href="https://www.lesswrong.com/posts/X8qTKsGcnsTFrqM96/monitoring-benchmark-for-ai-control" target="_blank">Halfway Blogpost</a>
+
                         </div>
                     </div>
                     
                     <div class="paper">
                         <div class="paper-title">Speciesism in AI: Evaluating Discrimination Against Animals in Large Language Models</div>
                         <div class="paper-authors">Monika Jotautaitė, Lucius Caviola, David A Brewster, Thilo Hagendorff</div>
-                        <div class="paper-venue">Accepted (in principle) at Nature Communications</div>
+                        <div class="paper-venue">Accepted at Nature Communications</div>
                         <div class="paper-description">Developing a speciesism benchmark comparing human and LLM responses. The results show that while most frontier models can recognize speciesism, they do not consider such behavior unethical.</div>
                         <div class="paper-links">
                             <a href="http://arxiv.org/abs/2508.11534" target="_blank">Paper</a>
+                            <a href="https://www.nature.com/articles/s41467-026-72297-9" target="_blank">Nature Communications</a>  
+                            <a href="http://aispeciesism.com/" target="_blank">Website</a>
                         </div>
                     </div>
 
